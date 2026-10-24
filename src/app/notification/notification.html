@@ -1,0 +1,149 @@
+
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-100 p-4 sm:p-8">
+
+  <!-- Page Header -->
+  <div class="mx-auto max-w-5xl">
+    <div class="mb-8 text-center">
+      <span class="mb-3 inline-flex rounded-full bg-indigo-100 px-4 py-2 text-sm font-semibold text-indigo-700">
+        ✨ Notification Center
+      </span>
+
+      <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+        Colorful Popup Notifications
+      </h1>
+
+      <p class="mt-3 text-sm text-slate-600 sm:text-base">
+        Angular 20 + Tailwind CSS
+      </p>
+    </div>
+
+    <!-- Notification Buttons -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+      <button
+        type="button"
+        (click)="showNotification('success')"
+        class="demo-button bg-gradient-to-r from-emerald-500 to-green-600 shadow-emerald-200">
+        <span class="text-2xl">✓</span>
+        <span>Success Popup</span>
+      </button>
+
+      <button
+        type="button"
+        (click)="showNotification('error')"
+        class="demo-button bg-gradient-to-r from-rose-500 to-red-600 shadow-rose-200">
+        <span class="text-2xl">✕</span>
+        <span>Error Popup</span>
+      </button>
+
+      <button
+        type="button"
+        (click)="showNotification('warning')"
+        class="demo-button bg-gradient-to-r from-amber-400 to-orange-500 shadow-orange-200">
+        <span class="text-2xl">!</span>
+        <span>Warning Popup</span>
+      </button>
+
+      <button
+        type="button"
+        (click)="showNotification('info')"
+        class="demo-button bg-gradient-to-r from-blue-500 to-indigo-600 shadow-blue-200">
+        <span class="text-2xl">i</span>
+        <span>Info Popup</span>
+      </button>
+
+    </div>
+
+    <!-- Preview Card -->
+    <div class="mt-8 rounded-3xl border border-white bg-white/80 p-6 shadow-xl shadow-indigo-100/50 backdrop-blur sm:p-10">
+      <div class="flex flex-col items-center justify-center gap-4 text-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-3xl text-white shadow-lg shadow-indigo-200">
+          🔔
+        </div>
+
+        <h2 class="text-xl font-bold text-slate-800">
+          Your notifications appear here
+        </h2>
+
+        <p class="max-w-lg text-sm leading-6 text-slate-500">
+          Click any colored button above to test the popup. Notifications
+          automatically disappear after five seconds, or close them manually.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup Notification Container -->
+  <div
+    class="pointer-events-none fixed right-3 top-3 z-50 flex w-[calc(100%-1.5rem)] max-w-sm flex-col gap-3 sm:right-6 sm:top-6"
+    aria-live="polite"
+    aria-atomic="false">
+
+    @for (item of notifications; track item.id) {
+      <div
+        class="notification-popup pointer-events-auto relative overflow-hidden rounded-2xl border bg-white shadow-2xl"
+        [class.border-emerald-200]="item.type === 'success'"
+        [class.border-rose-200]="item.type === 'error'"
+        [class.border-amber-200]="item.type === 'warning'"
+        [class.border-blue-200]="item.type === 'info'"
+        role="status">
+
+        <!-- Colored top strip -->
+        <div
+          class="h-1.5"
+          [class.bg-gradient-to-r]="true"
+          [class.from-emerald-400]="item.type === 'success'"
+          [class.to-green-600]="item.type === 'success'"
+          [class.from-rose-400]="item.type === 'error'"
+          [class.to-red-600]="item.type === 'error'"
+          [class.from-amber-300]="item.type === 'warning'"
+          [class.to-orange-500]="item.type === 'warning'"
+          [class.from-blue-400]="item.type === 'info'"
+          [class.to-indigo-600]="item.type === 'info'">
+        </div>
+
+        <div class="flex items-start gap-3 p-4">
+          <!-- Icon -->
+          <div
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xl font-bold text-white"
+            [class.bg-gradient-to-br]="true"
+            [class.from-emerald-400]="item.type === 'success'"
+            [class.to-green-600]="item.type === 'success'"
+            [class.from-rose-400]="item.type === 'error'"
+            [class.to-red-600]="item.type === 'error'"
+            [class.from-amber-300]="item.type === 'warning'"
+            [class.to-orange-500]="item.type === 'warning'"
+            [class.from-blue-400]="item.type === 'info'"
+            [class.to-indigo-600]="item.type === 'info'">
+
+            @if (item.type === 'success') { ✓ }
+            @else if (item.type === 'error') { ✕ }
+            @else if (item.type === 'warning') { ! }
+            @else { i }
+          </div>
+
+          <!-- Message -->
+          <div class="min-w-0 flex-1 pt-0.5">
+            <h3 class="text-sm font-bold text-slate-900">
+              {{ item.title }}
+            </h3>
+
+            <p class="mt-1 text-xs leading-5 text-slate-600 sm:text-sm">
+              {{ item.message }}
+            </p>
+          </div>
+
+          <!-- Close Button -->
+          <button
+            type="button"
+            (click)="closeNotification(item.id)"
+            [attr.aria-label]="'Close ' + item.title"
+            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-800">
+            ×
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+</div>

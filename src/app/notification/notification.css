@@ -1,0 +1,54 @@
+
+:host {
+  display: block;
+  min-height: 100%;
+}
+
+.demo-button {
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 18px;
+  padding: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+  box-shadow: 0 10px 25px -12px;
+}
+
+.demo-button:hover {
+  transform: translateY(-3px);
+}
+
+.demo-button:active {
+  transform: scale(0.98);
+}
+
+.notification-popup {
+  animation: popup-in 300ms ease-out both;
+}
+
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notification-popup,
+  .demo-button {
+    animation: none;
+    transition: none;
+  }
+}

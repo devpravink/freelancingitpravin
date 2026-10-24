@@ -1,0 +1,232 @@
+
+:host {
+  display: block;
+}
+
+/* Background glow */
+footer {
+  isolation: isolate;
+}
+
+.glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.16;
+  pointer-events: none;
+  animation: floatGlow 9s ease-in-out infinite alternate;
+}
+
+.glow-one {
+  top: 5%;
+  left: -100px;
+  background: #9333ea;
+}
+
+.glow-two {
+  right: -100px;
+  bottom: 0;
+  background: #6366f1;
+  animation-delay: -4s;
+}
+
+/* Logo */
+.logo-box {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgb(216 180 254 / 40%);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  box-shadow: 0 0 25px rgb(139 92 246 / 25%);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.logo-box span {
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.logo-box:hover {
+  transform: rotate(-8deg) scale(1.08);
+  box-shadow: 0 0 35px rgb(168 85 247 / 50%);
+}
+
+/* Headings */
+.footer-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.footer-heading::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 35px;
+  height: 2px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  content: "";
+  transition: width 0.35s ease;
+}
+
+.footer-heading:hover::after {
+  width: 100%;
+}
+
+/* Links */
+.footer-link {
+  display: inline-block;
+  color: #9ca3af;
+  font-size: 14px;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #c084fc;
+  transform: translateX(6px);
+}
+
+/* Social buttons */
+.social-link {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgb(168 85 247 / 25%);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 4%);
+  color: #d8b4fe;
+  font-size: 12px;
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  border-color: #a855f7;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+  box-shadow: 0 8px 25px rgb(124 58 237 / 30%);
+}
+
+/* Contact CTA */
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 19px;
+  border: 1px solid rgb(216 180 254 / 25%);
+  border-radius: 12px;
+  background: linear-gradient(110deg, #7c3aed, #6d28d9, #4f46e5);
+  background-size: 200% 200%;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgb(124 58 237 / 20%);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-position 0.5s ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-3px);
+  background-position: 100% 50%;
+  box-shadow: 0 12px 30px rgb(124 58 237 / 40%);
+}
+
+/* Back to top */
+.back-to-top {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgb(168 85 247 / 30%);
+  border-radius: 50%;
+  color: #d8b4fe;
+  font-size: 22px;
+  transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  background: #7c3aed;
+  color: white;
+}
+
+/* Floating heart */
+.heart {
+  display: inline-block;
+  color: #c084fc;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Smooth entrance */
+.footer-item {
+  animation: fadeUp 0.8s ease both;
+}
+
+.footer-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.footer-item:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.footer-item:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(30px, -25px) scale(1.15);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

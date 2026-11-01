@@ -1,62 +1,46 @@
 
-import { Component } from '@angular/core';
-
-type NotificationType = 'success' | 'error' | 'warning' | 'info';
-
-interface NotificationItem {
-  id: number;
-  title: string;
-  message: string;
-  type: NotificationType;
-}
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notification',
   standalone: true,
   imports: [],
   templateUrl: './notification.html',
-  styleUrl: './notification.css',
+  styleUrl: './notification.css'
 })
-export class Notification {
-  notifications: NotificationItem[] = [];
-  private nextId = 1;
+export class Notification implements OnInit, OnDestroy {
 
-  showNotification(type: NotificationType): void {
-    const content: Record<
-      NotificationType,
-      { title: string; message: string }
-    > = {
-      success: {
-        title: 'Success!',
-        message: 'Your changes have been saved successfully.',
-      },
-      error: {
-        title: 'Something went wrong!',
-        message: 'Your request could not be completed. Please try again.',
-      },
-      warning: {
-        title: 'Warning!',
-        message: 'Please check your information before continuing.',
-      },
-      info: {
-        title: 'Information',
-        message: 'You have a new notification waiting for you.',
-      },
-    };
+  showPopup = false;
+  imageError = false;
 
-    const id = this.nextId++;
+  private popupTimer?: ReturnType<typeof setTimeout>;
 
-    this.notifications = [
-      ...this.notifications,
-      { id, type, ...content[type] },
-    ];
+  constructor(private router: Router) {}
 
-    setTimeout(() => this.closeNotification(id), 5000);
+ngOnInit(): void {
+  this.popupTimer = setTimeout(() => {
+    this.showPopup = true;
+  }, 1500);
+}
+
+  closePopup(): void {
+    this.showPopup = false;
+
+    if (this.popupTimer) {
+      clearTimeout(this.popupTimer);
+      this.popupTimer = undefined;
+    }
   }
 
-  closeNotification(id: number): void {
-    this.notifications = this.notifications.filter(
-      notification => notification.id !== id
-    );
+  exploreServices(): void {
+    this.closePopup();
+    void this.router.navigate(['/services']);
+  }
+
+  ngOnDestroy(): void {
+    if (this.popupTimer) {
+      clearTimeout(this.popupTimer);
+    }
   }
 }

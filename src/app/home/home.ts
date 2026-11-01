@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Notification } from '../notification/notification';
 import { Footer } from '../footer/footer';
+import { YoutubeStudio } from '../pages/youtube-studio/youtube-studio';
 
 interface Service {
   title: string;
@@ -29,7 +30,7 @@ interface Stat {
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Notification, Footer],
+  imports: [Notification, Footer, YoutubeStudio],
 })
 export class Home {
   readonly companyName = 'Freelancing IT Pravin';

@@ -12,6 +12,20 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./home/home').then(m => m.Home)
   },
+    {
+    path: 'youtube-studio',
+    loadComponent: () =>
+      import('./pages/youtube-studio/youtube-studio')
+        .then(m => m.YoutubeStudio)
+  },
+  {
+  path: 'about',
+  loadComponent: () =>
+    import('./pages/about/about')
+      .then(m => m.About)
+}
+
+
 //   {
 //     path: 'about',
 //     title: 'About | My Angular App',

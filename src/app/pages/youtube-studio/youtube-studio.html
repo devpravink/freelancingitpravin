@@ -1,0 +1,339 @@
+
+<main class="studio-page">
+
+  <!-- HERO SECTION -->
+  <section class="studio-hero">
+
+    <div class="hero-glow glow-one"></div>
+    <div class="hero-glow glow-two"></div>
+
+    <div class="hero-container">
+
+      <div class="hero-content">
+
+        <span class="studio-eyebrow">
+          <span class="eyebrow-dot"></span>
+          FREELANCING IT PRAVIN · CREATIVE STUDIO
+        </span>
+
+        <h1>
+          Create. Animate.
+          <span>Go Viral.</span>
+        </h1>
+
+        <p>
+          From YouTube channel branding to AI-powered movies,
+          animation and professional video editing.
+          We transform your ideas into creative digital experiences.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="#youtube-services" class="primary-action">
+            Explore Services <span>→</span>
+          </a>
+
+          <a href="#studio-process" class="secondary-action">
+            How It Works
+          </a>
+
+        </div>
+
+        <div class="hero-trust">
+
+          <div class="trust-item">
+            <strong>AI</strong>
+            <span>Creative Production</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>HD</strong>
+            <span>Quality Delivery</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>360°</strong>
+            <span>Digital Solutions</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="hero-image-main">
+          <img
+            src="/assets/images/youtube/ai-movie.jpg"
+            alt="AI cinematic video creation"
+            loading="eager">
+        </div>
+
+        <div class="floating-card floating-top">
+          <span>▶</span>
+          <div>
+            <strong>Video Creation</strong>
+            <small>Creative production</small>
+          </div>
+        </div>
+
+        <div class="floating-card floating-bottom">
+          <span>✦</span>
+          <div>
+            <strong>AI Creative Studio</strong>
+            <small>Ideas into reality</small>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTRODUCTION -->
+  <section class="studio-intro">
+
+    <div class="section-heading">
+      <span class="section-label">WHAT WE CREATE</span>
+
+      <h2>
+        Everything Your <span>Creative Vision</span> Needs
+      </h2>
+
+      <p>
+        Complete digital content solutions for YouTubers,
+        creators, influencers, brands and businesses.
+      </p>
+    </div>
+
+    <div class="studio-stats">
+
+      <div>
+        <strong>10+</strong>
+        <span>Creative Services</span>
+      </div>
+
+      <div>
+        <strong>AI</strong>
+        <span>Powered Workflows</span>
+      </div>
+
+      <div>
+        <strong>HD</strong>
+        <span>Visual Production</span>
+      </div>
+
+      <div>
+        <strong>100%</strong>
+        <span>Custom Concepts</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="youtube-services" id="youtube-services">
+
+    <div class="section-heading">
+
+      <span class="section-label">OUR CREATIVE SERVICES</span>
+
+      <h2>
+        Explore Our <span>Digital Products</span>
+      </h2>
+
+      <p>
+        Professional creative services designed for content creators
+        and modern digital businesses.
+      </p>
+
+    </div>
+
+    <div class="service-grid">
+
+      @for (service of services; track service.title; let i = $index) {
+
+        <article class="service-card" [style.--card-index]="i">
+
+          <div class="service-image">
+
+            <img
+              [src]="service.image"
+              [alt]="service.title"
+              loading="lazy">
+
+            <span class="service-category">
+              {{ service.category }}
+            </span>
+
+            <span class="service-badge">
+              {{ service.tag }}
+            </span>
+
+          </div>
+
+          <div class="service-body">
+
+            <div class="service-title-row">
+
+              <span class="service-icon">
+                {{ service.icon }}
+              </span>
+
+              <span class="service-arrow">↗</span>
+
+            </div>
+
+            <h3>{{ service.title }}</h3>
+
+            <p>{{ service.description }}</p>
+
+            <div class="feature-list">
+
+              @for (feature of service.features; track feature) {
+                <span>
+                  <i>✓</i>
+                  {{ feature }}
+                </span>
+              }
+
+            </div>
+
+            <button
+              type="button"
+              class="service-button"
+              (click)="getStarted(service.title)">
+
+              Get Started
+              <span>→</span>
+
+            </button>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- AI CREATIVE BANNER -->
+  <section class="ai-banner" id="ai-solutions">
+
+    <div class="ai-banner-content">
+
+      <span class="section-label">NEXT GENERATION CONTENT</span>
+
+      <h2>
+        Your Imagination.
+        <span>Powered By AI.</span>
+      </h2>
+
+      <p>
+        Transform written prompts into creative visual concepts,
+        animated scenes and cinematic storytelling.
+      </p>
+
+      <div class="ai-features">
+
+        <span>✦ AI Video Concepts</span>
+        <span>✦ Digital Characters</span>
+        <span>✦ Cinematic Scenes</span>
+        <span>✦ Creative Storytelling</span>
+
+      </div>
+
+      <button
+        class="ai-action"
+        type="button"
+        (click)="getStarted('AI Movie and Video Creation')">
+
+        Create Your Project →
+      </button>
+
+    </div>
+
+    <div class="ai-banner-image">
+      <img
+        src="/assets/images/youtube/ai-character.jpg"
+        alt="AI digital character creation"
+        loading="lazy">
+    </div>
+
+  </section>
+
+
+  <!-- PROCESS -->
+  <section class="studio-process" id="studio-process">
+
+    <div class="section-heading">
+
+      <span class="section-label">OUR WORKFLOW</span>
+
+      <h2>
+        From Idea To <span>Final Creation</span>
+      </h2>
+
+      <p>
+        A simple and transparent process for every creative project.
+      </p>
+
+    </div>
+
+    <div class="process-grid">
+
+      @for (step of workflow; track step.number) {
+
+        <article class="process-card">
+
+          <span class="process-number">{{ step.number }}</span>
+
+          <div class="process-line"></div>
+
+          <h3>{{ step.title }}</h3>
+
+          <p>{{ step.description }}</p>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section class="studio-cta">
+
+    <span class="section-label">LET'S CREATE SOMETHING AMAZING</span>
+
+    <h2>
+      Have A Creative Idea?
+      <span>Let's Build It Together.</span>
+    </h2>
+
+    <p>
+      Whether it's a YouTube channel, an animated video,
+      an AI movie or a complete content package,
+      let's discuss your next project.
+    </p>
+
+    <button
+      type="button"
+      (click)="getStarted('YouTube and Creative Studio Services')">
+
+      Start Your Project →
+    </button>
+
+  </section>
+
+</main>
+<app-footer></app-footer>
